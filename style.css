@@ -41,6 +41,9 @@ button {
 
   width: 22%;
   height: 63%;
+
+  padding: 1rem;
+  border-radius: 15px;
 }
 
 .operator {
