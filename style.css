@@ -36,11 +36,23 @@ button {
   appearance: none; /* Remove default styling on other browsers */
 }
 
+button {
+  text-align: center;
+
+  width: 20%;
+  padding: 1.5rem;
+}
+
+.all-clear,
+.equals {
+  width: 43%;
+}
+
 .calculator {
   background-color: #899dae;
 
   width: 22%;
-  height: 63%;
+  height: 60%;
 
   padding: 1rem;
   border-radius: 15px;
@@ -52,6 +64,16 @@ button {
   align-items: flex-end;
 }
 
+.calculator-keypad {
+  height: 90%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  align-content: end;
+  gap: 10px;
+}
 .operator {
   background-color: #d2dce4;
 }
