@@ -57,7 +57,8 @@ button {
 }
 
 .numeric,
-.all-clear {
+.all-clear,
+.delete {
   background-color: #5a6b77;
 }
 
