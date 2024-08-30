@@ -3,3 +3,24 @@
 *::after {
   box-sizing: border-box;
 }
+
+body {
+  background-color: #eff2f5;
+}
+
+.calculator {
+  background-color: #899dae;
+}
+
+.operator {
+  background-color: #d2dce4;
+}
+
+.numeric,
+.all-clear {
+  background-color: #5a6b77;
+}
+
+.equals {
+  background-color: #ff7077;
+}
