@@ -41,6 +41,10 @@ button {
 
   flex: 1 20%;
   padding: 1.5rem;
+
+  font-size: 1.5rem;
+
+  color: #ffffff;
 }
 
 .all-clear,
@@ -49,8 +53,7 @@ button {
 }
 
 .calculator {
-  background-color: #899dae;
-
+  background-color: #5a6b77;
   width: 400px;
   height: auto;
 
@@ -71,7 +74,8 @@ button {
 }
 
 .operator {
-  background-color: #d2dce4;
+  background-color: #899dae;
+  border-radius: 50%;
 }
 
 .numeric,
@@ -82,4 +86,5 @@ button {
 
 .equals {
   background-color: #ff7077;
+  border-radius: 70px;
 }
