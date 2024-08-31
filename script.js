@@ -1,7 +1,7 @@
 const keypad = document.querySelector(".calculator-keypad");
 
-const previousOperator = document.querySelector(".previous-operator");
-const currentOperator = document.querySelector(".current-operator");
+const previousOperand = document.querySelector(".previous-operand");
+const currentOperand = document.querySelector(".current-operand");
 
 keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("numeric")) {
@@ -18,14 +18,14 @@ keypad.addEventListener("click", (e) => {
 });
 
 function appendToDisplay(value) {
-  const currentOperator = document.querySelector(".current-operator");
+  const currentOperand = document.querySelector(".current-operand");
 
-  if (currentOperator.textContent === "0") {
-    currentOperator.textContent = "";
+  if (currentOperand.textContent === "0") {
+    currentOperand.textContent = "";
   }
 
-  if (isOnlyOneDecimal(currentOperator.textContent, value)) {
-    currentOperator.textContent += value;
+  if (isOnlyOneDecimal(currentOperand.textContent, value)) {
+    currentOperand.textContent += value;
   }
 }
 
@@ -43,14 +43,14 @@ function handleOperatorKeys(e) {
   const operator = e.target.textContent;
   operation.operator = operator;
 
-  const currentTextContent = currentOperator.textContent;
+  const currentTextContent = currentOperand.textContent;
 
-  currentOperator.textContent = "";
+  currentOperand.textContent = "";
 
-  previousOperator.textContent = `${currentTextContent} ${operator}`;
+  previousOperand.textContent = `${currentTextContent} ${operator}`;
 }
 
 // TODO: Create functionality for equals button,
-// it should do the operation on previousOperator & currentOperator after clicked
+// it should do the operation on previousOperand & currentOperand after clicked
 
 function handleEqualsKey(e) {}
