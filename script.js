@@ -13,5 +13,9 @@ keypad.addEventListener("click", (e) => {
 function appendToDisplay(value) {
   const currentOperator = document.querySelector(".current-operator");
 
+  if (currentOperator.textContent === "0") {
+    currentOperator.textContent = "";
+  }
+
   currentOperator.textContent += value;
 }
