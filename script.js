@@ -1,9 +1,7 @@
-// add a click event to target key
-// append each key clicked on display
 const keypad = document.querySelector(".calculator-keypad");
 
-const currentOperator = document.querySelector(".current-operator");
 const previousOperator = document.querySelector(".previous-operator");
+const currentOperator = document.querySelector(".current-operator");
 
 keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("numeric")) {
@@ -12,6 +10,10 @@ keypad.addEventListener("click", (e) => {
 
   if (e.target.classList.contains("operator")) {
     handleOperatorKeys(e);
+  }
+
+  if (e.target.classList.contains("equals")) {
+    handleEqualsKey(e);
   }
 });
 
@@ -31,9 +33,6 @@ function isOnlyOneDecimal(textContent, value) {
   return value !== "." || !textContent.includes(".");
 }
 
-// TODO: Create functionality for equals button,
-// it should to the operation on previousOperator & currentOperator after clicked
-
 function handleNumericKeys(e) {
   const value = e.target.textContent;
 
@@ -42,9 +41,16 @@ function handleNumericKeys(e) {
 
 function handleOperatorKeys(e) {
   const operator = e.target.textContent;
+  operation.operator = operator;
 
   const currentTextContent = currentOperator.textContent;
 
   currentOperator.textContent = "";
+
   previousOperator.textContent = `${currentTextContent} ${operator}`;
 }
+
+// TODO: Create functionality for equals button,
+// it should do the operation on previousOperator & currentOperator after clicked
+
+function handleEqualsKey(e) {}
