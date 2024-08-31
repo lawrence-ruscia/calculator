@@ -7,9 +7,11 @@ const previousOperator = document.querySelector(".previous-operator");
 
 keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("numeric")) {
-    const value = e.target.textContent;
+    handleNumericKeys(e);
+  }
 
-    appendToDisplay(value);
+  if (e.target.classList.contains("operator")) {
+    handleOperatorKeys(e);
   }
 });
 
@@ -29,17 +31,20 @@ function isOnlyOneDecimal(textContent, value) {
   return value !== "." || !textContent.includes(".");
 }
 
-// add click event to operators
-// once an operator is clicked
-// then add current operator to previous operator including the operator selected
-// clear current operator
-keypad.addEventListener("click", (e) => {
-  if (e.target.classList.contains("operator")) {
-    const operator = e.target.textContent;
+// TODO: Create functionality for equals button,
+// it should to the operation on previousOperator & currentOperator after clicked
 
-    const currentTextContent = currentOperator.textContent;
+function handleNumericKeys(e) {
+  const value = e.target.textContent;
 
-    currentOperator.textContent = "";
-    previousOperator.textContent = `${currentTextContent} ${operator}`;
-  }
-});
+  appendToDisplay(value);
+}
+
+function handleOperatorKeys(e) {
+  const operator = e.target.textContent;
+
+  const currentTextContent = currentOperator.textContent;
+
+  currentOperator.textContent = "";
+  previousOperator.textContent = `${currentTextContent} ${operator}`;
+}
