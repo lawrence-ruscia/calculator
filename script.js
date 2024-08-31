@@ -25,3 +25,21 @@ function appendToDisplay(value) {
 function isOnlyOneDecimal(textContent, value) {
   return value !== "." || !textContent.includes(".");
 }
+
+// add click event to operators
+// once an operator is clicked
+// then add current operator to previous operator including the operator selected
+// clear current operator
+keypad.addEventListener("click", (e) => {
+  if (e.target.classList.contains("operator")) {
+    const operator = e.target.textContent;
+
+    const currentOperator = document.querySelector(".current-operator");
+    const previousOperator = document.querySelector(".previous-operator");
+
+    const currentTextContent = currentOperator.textContent;
+
+    currentOperator.textContent = "";
+    previousOperator.textContent = `${currentTextContent} ${operator}`;
+  }
+});
