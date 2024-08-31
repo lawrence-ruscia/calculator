@@ -15,9 +15,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 100vw;
-  height: 100vh;
-
+  min-height: 100vh;
+  padding: 1rem;
   color: #ffffff;
   font-weight: 500;
 }
@@ -53,7 +52,7 @@ button {
 }
 
 .calculator {
-  background-color: #5a6b77;
+  background-color: #243441;
   width: 400px;
   height: auto;
 
@@ -85,15 +84,16 @@ button {
   gap: 0.5rem;
 }
 
+.all-clear,
+.delete,
 .operator {
-  background-color: #899dae;
-  border-radius: 50%;
+  color: #ff7077;
 }
 
 .numeric,
 .all-clear,
 .delete {
-  background-color: #5a6b77;
+  background-color: #243441;
 }
 
 .equals {
