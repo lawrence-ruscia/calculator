@@ -2,6 +2,9 @@
 // append each key clicked on display
 const keypad = document.querySelector(".calculator-keypad");
 
+const currentOperator = document.querySelector(".current-operator");
+const previousOperator = document.querySelector(".previous-operator");
+
 keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("numeric")) {
     const value = e.target.textContent;
@@ -33,9 +36,6 @@ function isOnlyOneDecimal(textContent, value) {
 keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("operator")) {
     const operator = e.target.textContent;
-
-    const currentOperator = document.querySelector(".current-operator");
-    const previousOperator = document.querySelector(".previous-operator");
 
     const currentTextContent = currentOperator.textContent;
 
