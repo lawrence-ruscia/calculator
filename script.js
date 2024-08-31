@@ -17,5 +17,11 @@ function appendToDisplay(value) {
     currentOperator.textContent = "";
   }
 
-  currentOperator.textContent += value;
+  if (isOnlyOneDecimal(currentOperator.textContent, value)) {
+    currentOperator.textContent += value;
+  }
+}
+
+function isOnlyOneDecimal(textContent, value) {
+  return value !== "." || !textContent.includes(".");
 }
