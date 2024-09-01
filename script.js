@@ -147,6 +147,11 @@ function modulo(x, y) {
 function updateResult(result) {
   previousOperand.textContent = "";
 
+  if (result === "ERROR") {
+    currentOperand.textContent = "Error";
+    return;
+  }
+
   currentOperand.textContent = parseFloat(result.toFixed(2));
 }
 
