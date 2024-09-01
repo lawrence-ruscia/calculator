@@ -60,9 +60,6 @@ function handleOperatorKeys(e) {
   console.log("previous: " + operation.previousOperand);
 }
 
-// Track previous operand, operator, and current operand
-// create a function operate() to perform the operation based on the operator
-
 function handleEqualsKey(e) {
   if (
     operation.currentOperator === "" ||
@@ -72,17 +69,51 @@ function handleEqualsKey(e) {
     return;
   }
 
-  const operand1 = parseFloat(operation.currentOperand);
+  const operand1 = parseFloat(operation.previousOperand);
   const operator = operation.operator;
-  const operand2 = parseFloat(operation.previousOperand);
+  const operand2 = parseFloat(operation.currentOperand);
 
   let result = "";
   switch (operator) {
     case "+":
-      result = operand1 + operand2;
+      result = add(operand1, operand2);
       break;
+    case "-":
+      result = subtract(operand1, operand2);
+      break;
+    case "×":
+      result = multiply(operand1, operand2);
+      break;
+    case "÷":
+      result = divide(operand1, operand2);
+      break;
+    case "%":
+      result = modulo(operand1, operand2);
+      break;
+    default:
+      console.log("ERROR: Invalid Operator");
   }
 
   console.log("result: " + result);
   return result;
+}
+
+function add(x, y) {
+  return x + y;
+}
+
+function subtract(x, y) {
+  return x - y;
+}
+
+function multiply(x, y) {
+  x * y;
+}
+
+function divide(x, y) {
+  return y !== 0 ? x / y : "ERROR: Cannot Divide by zero";
+}
+
+function modulo(x, y) {
+  return x % y;
 }
