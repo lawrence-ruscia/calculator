@@ -111,7 +111,7 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
-  return y !== 0 ? x / y : "ERROR: Cannot Divide by zero";
+  return y !== 0 ? x / y : "ERROR";
 }
 
 function modulo(x, y) {
