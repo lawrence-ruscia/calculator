@@ -21,6 +21,10 @@ keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("equals")) {
     handleEqualsKey();
   }
+
+  if (e.target.classList.contains("all-clear")) {
+    handleAllClearKey();
+  }
 });
 
 function appendToDisplay(value) {
@@ -121,4 +125,13 @@ function modulo(x, y) {
 function updateResult(result) {
   previousOperand.textContent = "";
   currentOperand.textContent = result.toFixed(2);
+}
+
+function handleAllClearKey() {
+  currentOperand.textContent = "";
+  previousOperand.textContent = "";
+
+  operation.currentOperand = "";
+  operation.operator = "";
+  operation.previousOperand = "";
 }
