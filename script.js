@@ -82,10 +82,9 @@ function alreadyHaveAnOperation() {
   );
 }
 
-// TODO: Handle where current operator is 0
 function handleEqualsKey() {
   if (
-    operation.currentOperator === "" ||
+    operation.currentOperand === "" ||
     operation.operator === "" ||
     operation.previousOperand === ""
   ) {
