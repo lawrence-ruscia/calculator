@@ -60,8 +60,29 @@ function handleOperatorKeys(e) {
   console.log("previous: " + operation.previousOperand);
 }
 
-// TODO: Create functionality for equals button,
-// it should do the operation on previousOperand & currentOperand after clicked
-
 // Track previous operand, operator, and current operand
 // create a function operate() to perform the operation based on the operator
+
+function handleEqualsKey(e) {
+  if (
+    operation.currentOperator === "" ||
+    operation.operator === "" ||
+    operation.previousOperand === ""
+  ) {
+    return;
+  }
+
+  const operand1 = parseFloat(operation.currentOperand);
+  const operator = operation.operator;
+  const operand2 = parseFloat(operation.previousOperand);
+
+  let result = "";
+  switch (operator) {
+    case "+":
+      result = operand1 + operand2;
+      break;
+  }
+
+  console.log("result: " + result);
+  return result;
+}
