@@ -57,7 +57,10 @@ function handleOperatorKeys(e) {
 
   const currentTextContent = currentOperand.textContent;
   currentOperand.textContent = "";
+  previousOperand.textContent = "";
+
   operation.currentOperand = ""; // clear current operand for new input
+  operation.previousOperand = "";
 
   previousOperand.textContent = `${currentTextContent} ${operator}`;
   operation.previousOperand += currentTextContent; // store current operand to previous
