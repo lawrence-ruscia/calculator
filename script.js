@@ -118,9 +118,7 @@ function modulo(x, y) {
   return x % y;
 }
 
-// FIXME: Result overflows if its' too long,
-//        should trim or round the result
 function updateResult(result) {
   previousOperand.textContent = "";
-  currentOperand.textContent = result;
+  currentOperand.textContent = result.toFixed(2);
 }
