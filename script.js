@@ -54,15 +54,22 @@ function handleNumericKeys(e) {
   appendToDisplay(value);
 }
 
+// FIXME: If the currentOperand and previousOperand has already an operation
+//        then it should automatically return the result once another operand is selected
 function handleOperatorKeys(e) {
   const operator = e.target.textContent;
   operation.operator = operator;
   console.log("operator: " + operator);
 
+  if (currentOperand.textContent !== "" && previousOperand.textContent !== "") {
+    // FIXME: The second operation selected performs the operation on the previous operation
+
+    handleEqualsKey();
+  }
+
   const currentTextContent = currentOperand.textContent;
   currentOperand.textContent = "";
   previousOperand.textContent = "";
-
   operation.currentOperand = ""; // clear current operand for new input
   operation.previousOperand = "";
 
@@ -84,6 +91,10 @@ function handleEqualsKey() {
   const operator = operation.operator;
   const operand2 = parseFloat(operation.currentOperand);
 
+  operate(operand1, operator, operand2);
+}
+
+function operate(operand1, operator, operand2) {
   let result = "";
   switch (operator) {
     case "+":
