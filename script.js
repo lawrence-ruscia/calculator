@@ -82,6 +82,7 @@ function alreadyHaveAnOperation() {
   );
 }
 
+// TODO: Handle where current operator is 0
 function handleEqualsKey() {
   if (
     operation.currentOperator === "" ||
@@ -151,7 +152,7 @@ function updateResult(result) {
 }
 
 function handleAllClearKey() {
-  currentOperand.textContent = "";
+  currentOperand.textContent = "0";
   previousOperand.textContent = "";
 
   operation.currentOperand = "";
@@ -160,6 +161,12 @@ function handleAllClearKey() {
 }
 
 function handleDeleteKey() {
-  currentOperand.textContent = currentOperand.textContent.slice(0, -1);
-  operation.currentOperand = operation.currentOperand.slice(0, -1);
+  let currentLength = currentOperand.textContent.length;
+  if (currentLength > 1) {
+    currentOperand.textContent = currentOperand.textContent.slice(0, -1);
+    operation.currentOperand = operation.currentOperand.slice(0, -1);
+  } else {
+    currentOperand.textContent = "0";
+    operation.currentOperand = "0";
+  }
 }
