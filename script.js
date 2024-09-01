@@ -124,7 +124,7 @@ function modulo(x, y) {
 
 function updateResult(result) {
   previousOperand.textContent = "";
-  currentOperand.textContent = result.toFixed(2);
+  currentOperand.textContent = parseFloat(result.toFixed(2));
 }
 
 function handleAllClearKey() {
