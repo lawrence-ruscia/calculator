@@ -19,7 +19,7 @@ keypad.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("equals")) {
-    handleEqualsKey(e);
+    handleEqualsKey();
   }
 });
 
@@ -60,7 +60,7 @@ function handleOperatorKeys(e) {
   console.log("previous: " + operation.previousOperand);
 }
 
-function handleEqualsKey(e) {
+function handleEqualsKey() {
   if (
     operation.currentOperator === "" ||
     operation.operator === "" ||
@@ -95,7 +95,7 @@ function handleEqualsKey(e) {
   }
 
   console.log("result: " + result);
-  return result;
+  updateResult(result);
 }
 
 function add(x, y) {
@@ -107,7 +107,7 @@ function subtract(x, y) {
 }
 
 function multiply(x, y) {
-  x * y;
+  return x * y;
 }
 
 function divide(x, y) {
@@ -116,4 +116,11 @@ function divide(x, y) {
 
 function modulo(x, y) {
   return x % y;
+}
+
+// FIXME: Result overflows if its' too long,
+//        should trim or round the result
+function updateResult(result) {
+  previousOperand.textContent = "";
+  currentOperand.textContent = result;
 }
