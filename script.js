@@ -25,6 +25,10 @@ keypad.addEventListener("click", (e) => {
   if (e.target.classList.contains("all-clear")) {
     handleAllClearKey();
   }
+
+  if (e.target.classList.contains("delete")) {
+    handleDeleteKey();
+  }
 });
 
 function appendToDisplay(value) {
@@ -137,4 +141,9 @@ function handleAllClearKey() {
   operation.currentOperand = "";
   operation.operator = "";
   operation.previousOperand = "";
+}
+
+function handleDeleteKey() {
+  currentOperand.textContent = currentOperand.textContent.slice(0, -1);
+  operation.currentOperand = operation.currentOperand.slice(0, -1);
 }
