@@ -54,18 +54,14 @@ function handleNumericKeys(e) {
   appendToDisplay(value);
 }
 
-// FIXME: If the currentOperand and previousOperand has already an operation
-//        then it should automatically return the result once another operand is selected
 function handleOperatorKeys(e) {
+  if (alreadyHaveAnOperation()) {
+    handleEqualsKey();
+  }
+
   const operator = e.target.textContent;
   operation.operator = operator;
   console.log("operator: " + operator);
-
-  if (currentOperand.textContent !== "" && previousOperand.textContent !== "") {
-    // FIXME: The second operation selected performs the operation on the previous operation
-
-    handleEqualsKey();
-  }
 
   const currentTextContent = currentOperand.textContent;
   currentOperand.textContent = "";
@@ -76,6 +72,14 @@ function handleOperatorKeys(e) {
   previousOperand.textContent = `${currentTextContent} ${operator}`;
   operation.previousOperand += currentTextContent; // store current operand to previous
   console.log("previous: " + operation.previousOperand);
+}
+
+function alreadyHaveAnOperation() {
+  return (
+    previousOperand.textContent !== "" &&
+    operation.operator !== "" &&
+    currentOperand.textContent !== ""
+  );
 }
 
 function handleEqualsKey() {
@@ -142,6 +146,7 @@ function modulo(x, y) {
 
 function updateResult(result) {
   previousOperand.textContent = "";
+
   currentOperand.textContent = parseFloat(result.toFixed(2));
 }
 
