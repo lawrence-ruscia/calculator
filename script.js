@@ -87,7 +87,6 @@ function appendToDisplay(value) {
   if (isOnlyOneDecimal(currentOperand.textContent, value)) {
     operation.currentOperand += value;
 
-    console.log("current: " + operation.currentOperand);
     currentOperand.textContent += value;
   }
 }
@@ -137,7 +136,6 @@ function handleOperatorKeys(e, eventType) {
   }
 
   operation.operator = operator;
-  console.log("operator: " + operator);
 
   const currentTextContent = currentOperand.textContent;
 
@@ -145,8 +143,6 @@ function handleOperatorKeys(e, eventType) {
 
   previousOperand.textContent = `${currentTextContent} ${operator}`;
   operation.previousOperand += currentTextContent; // store current operand to previous
-
-  console.log("previous: " + operation.previousOperand);
 }
 
 function clearOperand() {
@@ -202,7 +198,6 @@ function operate(operand1, operator, operand2) {
       console.log("ERROR: Invalid Operator");
   }
 
-  console.log("result: " + result);
   updateResult(result);
 }
 
