@@ -9,6 +9,14 @@ const operation = {
   previousOperand: "",
 };
 
+const compute = {
+  "+": (x, y) => x + y,
+  "-": (x, y) => x - y,
+  "×": (x, y) => x * y,
+  "÷": (x, y) => (y !== 0 ? x / y : "ERROR"),
+  "%": (x, y) => x % y,
+};
+
 function handleClickEvents() {
   const clickEvent = "click";
 
@@ -177,48 +185,9 @@ function handleEqualsKey() {
 }
 
 function operate(operand1, operator, operand2) {
-  let result = "";
-  switch (operator) {
-    case "+":
-      result = add(operand1, operand2);
-      break;
-    case "-":
-      result = subtract(operand1, operand2);
-      break;
-    case "×":
-      result = multiply(operand1, operand2);
-      break;
-    case "÷":
-      result = divide(operand1, operand2);
-      break;
-    case "%":
-      result = modulo(operand1, operand2);
-      break;
-    default:
-      console.log("ERROR: Invalid Operator");
-  }
-
+  const result = compute[operator](operand1, operand2);
+  console.log(result);
   updateResult(result);
-}
-
-function add(x, y) {
-  return x + y;
-}
-
-function subtract(x, y) {
-  return x - y;
-}
-
-function multiply(x, y) {
-  return x * y;
-}
-
-function divide(x, y) {
-  return y !== 0 ? x / y : "ERROR";
-}
-
-function modulo(x, y) {
-  return x % y;
 }
 
 function updateResult(result) {
