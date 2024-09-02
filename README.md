@@ -17,4 +17,4 @@ A simple, yet fully functional calculator built with HTML, CSS, and JavaScript. 
 
 ## Screenshots
 
-![App Screenshot](./assets/images/screenshot-demo.png)
+![Calculator screenshot](./assets/images/screenshot-demo.png "Calculator UI")
