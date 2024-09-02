@@ -71,16 +71,17 @@ button {
 }
 
 .previous-operand {
-  font-size: 1.5rem;
   width: 100%;
+  font-size: 1.5rem;
+  text-align: right;
   overflow: hidden;
 }
 
 .current-operand {
   width: 100%;
+  font-size: 4.5rem;
   text-align: right;
   overflow: auto;
-  font-size: 4.5rem;
 }
 
 .calculator-keypad {
