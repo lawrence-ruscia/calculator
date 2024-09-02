@@ -22,7 +22,7 @@ function handleClickEvents() {
     }
 
     if (e.target.classList.contains("equals")) {
-      handleEqualsKey();
+      handleEqualsKey(e);
     }
 
     if (e.target.classList.contains("all-clear")) {
@@ -42,12 +42,16 @@ function handleKeydownEvents() {
     const keyValue = e.key;
     const isNumeric = keyValue.match(/[\d]/g);
     const isAnOperator = keyValue.match(/[+\-*/%]/g);
+    const isEnterKey = keyValue === "Enter";
 
     if (isNumeric) {
       handleNumericKeys(e, keydownEvent);
     }
     if (isAnOperator) {
       handleOperatorKeys(e, keydownEvent);
+    }
+    if (isEnterKey) {
+      handleEqualsKey(e);
     }
   });
 }
@@ -155,6 +159,7 @@ function operate(operand1, operator, operand2) {
       result = subtract(operand1, operand2);
       break;
     case "×":
+      // TODO: add keyboard support '*'
       result = multiply(operand1, operand2);
       break;
     case "÷":
