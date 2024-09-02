@@ -43,6 +43,7 @@ function handleKeydownEvents() {
     const isNumeric = keyValue.match(/[\d\.]/g);
     const isAnOperator = keyValue.match(/[+\-*/%]/g);
     const isEnterKey = keyValue === "Enter";
+    const isBackspace = keyValue === "Backspace";
 
     if (isNumeric) {
       handleNumericKeys(e, keydownEvent);
@@ -52,6 +53,9 @@ function handleKeydownEvents() {
     }
     if (isEnterKey) {
       handleEqualsKey(e);
+    }
+    if (isBackspace) {
+      handleDeleteKey();
     }
   });
 }
