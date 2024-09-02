@@ -129,7 +129,8 @@ function handleOperatorKeys(e, eventType) {
 
     if (keyValue === "*") {
       operator = "×";
-      // TODO: Add support for divide '/'
+    } else if (keyValue === "/") {
+      operator = "÷";
     } else {
       operator = keyValue;
     }
