@@ -18,7 +18,7 @@ function handleClickEvents() {
     }
 
     if (e.target.classList.contains("operator")) {
-      handleOperatorKeys(e);
+      handleOperatorKeys(e, clickEvent);
     }
 
     if (e.target.classList.contains("equals")) {
@@ -41,10 +41,13 @@ function handleKeydownEvents() {
   document.addEventListener(keydownEvent, (e) => {
     const keyValue = e.key;
     const isNumeric = keyValue.match(/[\d]/g);
-    const isAnOperator = keyValue.match(/[+\-*/=]/g);
+    const isAnOperator = keyValue.match(/[+\-*/%]/g);
 
     if (isNumeric) {
       handleNumericKeys(e, keydownEvent);
+    }
+    if (isAnOperator) {
+      handleOperatorKeys(e, keydownEvent);
     }
   });
 }
@@ -75,6 +78,11 @@ function handleNumericKeys(e, eventType) {
   if (eventType === "keydown") {
     const keyValue = e.key;
 
+    if (keyValue.match(/[F/d]/g)) {
+      e.preventDefault();
+      return;
+    }
+
     appendToDisplay(keyValue);
   }
 }
@@ -84,21 +92,35 @@ function handleOperatorKeys(e, eventType) {
     handleEqualsKey();
   }
 
-  const operator = e.target.textContent;
+  let operator = "";
+  if (eventType === "click") {
+    operator = e.target.textContent;
+  }
+
+  if (eventType === "keydown") {
+    operator = e.key;
+  }
+
   operation.operator = operator;
   console.log("operator: " + operator);
 
   const currentTextContent = currentOperand.textContent;
-  currentOperand.textContent = "";
-  previousOperand.textContent = "";
-  operation.currentOperand = ""; // clear current operand for new input
-  operation.previousOperand = "";
+
+  clearOperand();
 
   previousOperand.textContent = `${currentTextContent} ${operator}`;
   operation.previousOperand += currentTextContent; // store current operand to previous
+
   console.log("previous: " + operation.previousOperand);
 }
 
+function clearOperand() {
+  currentOperand.textContent = "";
+  previousOperand.textContent = "";
+
+  operation.currentOperand = ""; // clear current operand for new input
+  operation.previousOperand = "";
+}
 function alreadyHaveAnOperation() {
   return (
     previousOperand.textContent !== "" &&
