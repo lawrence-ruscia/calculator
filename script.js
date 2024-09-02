@@ -40,7 +40,7 @@ function handleKeydownEvents() {
 
   document.addEventListener(keydownEvent, (e) => {
     const keyValue = e.key;
-    const isNumeric = keyValue.match(/[\d]/g);
+    const isNumeric = keyValue.match(/[\d\.]/g);
     const isAnOperator = keyValue.match(/[+\-*/%]/g);
     const isEnterKey = keyValue === "Enter";
 
