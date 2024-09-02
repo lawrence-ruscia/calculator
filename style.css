@@ -72,9 +72,14 @@ button {
 
 .previous-operand {
   font-size: 1.5rem;
+  width: 100%;
+  overflow: hidden;
 }
 
 .current-operand {
+  width: 100%;
+  text-align: right;
+  overflow: auto;
   font-size: 4.5rem;
 }
 
