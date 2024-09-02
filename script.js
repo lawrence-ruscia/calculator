@@ -102,7 +102,13 @@ function handleOperatorKeys(e, eventType) {
   }
 
   if (eventType === "keydown") {
-    operator = e.key;
+    const keyValue = e.key;
+
+    if (keyValue === "*") {
+      operator = "×";
+    } else {
+      operator = keyValue;
+    }
   }
 
   operation.operator = operator;
@@ -159,7 +165,6 @@ function operate(operand1, operator, operand2) {
       result = subtract(operand1, operand2);
       break;
     case "×":
-      // TODO: add keyboard support '*'
       result = multiply(operand1, operand2);
       break;
     case "÷":
