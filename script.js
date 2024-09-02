@@ -44,6 +44,8 @@ function handleKeydownEvents() {
     const isAnOperator = keyValue.match(/[+\-*/%]/g);
     const isEnterKey = keyValue === "Enter";
     const isBackspace = keyValue === "Backspace";
+    const isAllClear =
+      keyValue === "Escape" || (e.ctrlKey && keyValue === "Backspace");
 
     if (isNumeric) {
       handleNumericKeys(e, keydownEvent);
@@ -56,6 +58,9 @@ function handleKeydownEvents() {
     }
     if (isBackspace) {
       handleDeleteKey();
+    }
+    if (isAllClear) {
+      handleAllClearKey();
     }
   });
 }
