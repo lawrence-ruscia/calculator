@@ -10,9 +10,11 @@ const operation = {
 };
 
 function handleClickEvents() {
-  keypad.addEventListener("click", (e) => {
+  const clickEvent = "click";
+
+  keypad.addEventListener(clickEvent, (e) => {
     if (e.target.classList.contains("numeric")) {
-      handleNumericKeys(e);
+      handleNumericKeys(e, clickEvent);
     }
 
     if (e.target.classList.contains("operator")) {
@@ -29,6 +31,20 @@ function handleClickEvents() {
 
     if (e.target.classList.contains("delete")) {
       handleDeleteKey();
+    }
+  });
+}
+
+function handleKeydownEvents() {
+  const keydownEvent = "keydown";
+
+  document.addEventListener(keydownEvent, (e) => {
+    const keyValue = e.key;
+    const isNumeric = keyValue.match(/[\d]/g);
+    const isAnOperator = keyValue.match(/[+\-*/=]/g);
+
+    if (isNumeric) {
+      handleNumericKeys(e, keydownEvent);
     }
   });
 }
@@ -50,13 +66,20 @@ function isOnlyOneDecimal(textContent, value) {
   return value !== "." || !textContent.includes(".");
 }
 
-function handleNumericKeys(e) {
-  const value = e.target.textContent;
+function handleNumericKeys(e, eventType) {
+  if (eventType === "click") {
+    const clickValue = e.target.textContent;
+    appendToDisplay(clickValue);
+  }
 
-  appendToDisplay(value);
+  if (eventType === "keydown") {
+    const keyValue = e.key;
+
+    appendToDisplay(keyValue);
+  }
 }
 
-function handleOperatorKeys(e) {
+function handleOperatorKeys(e, eventType) {
   if (alreadyHaveAnOperation()) {
     handleEqualsKey();
   }
@@ -178,3 +201,4 @@ function handleDeleteKey() {
 }
 
 handleClickEvents();
+handleKeydownEvents();
