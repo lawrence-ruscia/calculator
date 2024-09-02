@@ -40,29 +40,43 @@ function handleKeydownEvents() {
 
   document.addEventListener(keydownEvent, (e) => {
     const keyValue = e.key;
-    const isNumeric = keyValue.match(/[\d\.]/g);
-    const isAnOperator = keyValue.match(/[+\-*/%]/g);
-    const isEnterKey = keyValue === "Enter";
-    const isBackspace = keyValue === "Backspace";
-    const isAllClear =
-      keyValue === "Escape" || (e.ctrlKey && keyValue === "Backspace");
 
-    if (isNumeric) {
+    if (isNumeric(keyValue)) {
       handleNumericKeys(e, keydownEvent);
     }
-    if (isAnOperator) {
+    if (isOperator(keyValue)) {
       handleOperatorKeys(e, keydownEvent);
     }
-    if (isEnterKey) {
+    if (isEnterKey(keyValue)) {
       handleEqualsKey(e);
     }
-    if (isBackspace) {
+    if (isBackspace(keyValue)) {
       handleDeleteKey();
     }
-    if (isAllClear) {
+    if (isAllClear(e, keyValue)) {
       handleAllClearKey();
     }
   });
+}
+
+function isNumeric(keyValue) {
+  return keyValue.match(/[\d\.]/g);
+}
+
+function isOperator(keyValue) {
+  return keyValue.match(/[+\-*/%]/g);
+}
+
+function isEnterKey(keyValue) {
+  return keyValue === "Enter";
+}
+
+function isBackspace(keyValue) {
+  return keyValue === "Backspace";
+}
+
+function isAllClear(e, keyValue) {
+  return keyValue === "Escape" || (e.ctrlKey && keyValue === "Backspace");
 }
 
 function appendToDisplay(value) {
@@ -115,6 +129,7 @@ function handleOperatorKeys(e, eventType) {
 
     if (keyValue === "*") {
       operator = "×";
+      // TODO: Add support for divide '/'
     } else {
       operator = keyValue;
     }
