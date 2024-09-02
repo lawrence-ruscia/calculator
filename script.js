@@ -9,27 +9,29 @@ const operation = {
   previousOperand: "",
 };
 
-keypad.addEventListener("click", (e) => {
-  if (e.target.classList.contains("numeric")) {
-    handleNumericKeys(e);
-  }
+function handleClickEvents() {
+  keypad.addEventListener("click", (e) => {
+    if (e.target.classList.contains("numeric")) {
+      handleNumericKeys(e);
+    }
 
-  if (e.target.classList.contains("operator")) {
-    handleOperatorKeys(e);
-  }
+    if (e.target.classList.contains("operator")) {
+      handleOperatorKeys(e);
+    }
 
-  if (e.target.classList.contains("equals")) {
-    handleEqualsKey();
-  }
+    if (e.target.classList.contains("equals")) {
+      handleEqualsKey();
+    }
 
-  if (e.target.classList.contains("all-clear")) {
-    handleAllClearKey();
-  }
+    if (e.target.classList.contains("all-clear")) {
+      handleAllClearKey();
+    }
 
-  if (e.target.classList.contains("delete")) {
-    handleDeleteKey();
-  }
-});
+    if (e.target.classList.contains("delete")) {
+      handleDeleteKey();
+    }
+  });
+}
 
 function appendToDisplay(value) {
   if (currentOperand.textContent === "0") {
@@ -174,3 +176,5 @@ function handleDeleteKey() {
     operation.currentOperand = "0";
   }
 }
+
+handleClickEvents();
